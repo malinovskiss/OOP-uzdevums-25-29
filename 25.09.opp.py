@@ -1,3 +1,4 @@
+#Tēma- Bibliotēkas vadības sistēma
 #Klases izveide
 class Biblioteka():
 #Konstruktora izveide
