@@ -1,9 +1,11 @@
 #Tēma- Bibliotēkas vadības sistēma
 #Klases izveide
-class Biblioteka():
-#Konstruktora izveide
-    def __init__(self,gramatas,zanrs,autors):
-        self.gramatas = gramatas
-        self.zanrs = zanrs
-        self.autors = autors
- 
+class Aptieka():
+    # Konstruktora izveide
+    def __init__(self):
+        self.gramatu_kategorija = ""
+        self.gramatas_nosaukums = ""
+        self.gramatas_raksturojums = ""
+        self.gramatas_cena = ""
+        self.lasitaja_vārds= ""
+        self.lasitaja_uzvārds = ""
