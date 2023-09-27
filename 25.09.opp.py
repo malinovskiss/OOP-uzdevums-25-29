@@ -6,3 +6,4 @@ class Biblioteka():
         self.gramatas = gramatas
         self.zanrs = zanrs
         self.autors = autors
+ 
