@@ -97,8 +97,11 @@ logugrupa = [[
 
 
 window = psg.Window('Biblioteka', logugrupa)
+
 while True:
     event,values = window.read()
+
+    
     if event == "Saglabāt lasītāja datus":
         lasitajs_vards = values [0]
         lasitajs_uzvards = values [1]
@@ -106,6 +109,7 @@ while True:
         lasitajs_tel_numurs = values [3]
         Dati = Biblioteka(lasitajs_vards,lasitajs_uzvards,lasitajs_pk,lasitajs_tel_numurs,gramatas_nosaukums="",gramatas_raksturojums="",gramatas_kategorija="",gramatas_cena="")
         Dati.lasitajs_saglabat()
+        
     if event == "Saglabāt grāmatas datus":
         lasitajs_vards = values [4]
         lasitajs_uzvards = values [5]
@@ -117,6 +121,7 @@ while True:
         gramatas_cena = values [3]
         Dati = Biblioteka(gramatas_nosaukums,gramatas_raksturojums,gramatas_kategorija,gramatas_cena,lasitajs_vards,lasitajs_uzvards,lasitajs_pk,lasitajs_tel_numurs,)
         Dati.gramatas_saglabat()
+        
     if event == "Lasītājs datu apskate":
         psg.theme("LightGreen4")
         layout = [
@@ -127,10 +132,13 @@ while True:
                   [psg.Text("Telefona numurs: " + Dati.lasitajs_tel_numurs)],
                   [psg.Button("Iziet")]
                   ]
+        
         window2 = psg.Window('',layout)
         event,values = window2.read()
+        
         if event == "Iziet":
             break 
+            
     if event == "Grāmatas datu apskate":
         psg.theme("LightGreen4")
         layout = [
@@ -143,6 +151,7 @@ while True:
                   ]
         window2 = psg.Window('',layout)
         event,values = window2.read()
+        
         if event == "Iziet":
             break
     if event in (psg.WIN_CLOSED,'Aizvērt'):
