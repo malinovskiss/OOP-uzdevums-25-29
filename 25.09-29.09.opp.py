@@ -99,3 +99,51 @@ logugrupa = [[
 window = psg.Window('Biblioteka', logugrupa)
 while True:
     event,values = window.read()
+    if event == "Saglabāt lasītāja datus":
+        lasitajs_vards = values [0]
+        lasitajs_uzvards = values [1]
+        lasitajs_pk = values [2]
+        lasitajs_tel_numurs = values [3]
+        Dati = Biblioteka(lasitajs_vards,lasitajs_uzvards,lasitajs_pk,lasitajs_tel_numurs,gramatas_nosaukums="",gramatas_raksturojums="",gramatas_kategorija="",gramatas_cena="")
+        Dati.lasitajs_saglabat()
+    if event == "Saglabāt grāmatas datus":
+        lasitajs_vards = values [4]
+        lasitajs_uzvards = values [5]
+        lasitajs_pk = values [6]
+        lasitajs_tel_numurs = values [7]
+        gramatas_nosaukums = values [0]
+        gramatas_raksturojums = values [1]
+        gramatas_kategorija = values [2]
+        gramatas_cena = values [3]
+        Dati = Biblioteka(gramatas_nosaukums,gramatas_raksturojums,gramatas_kategorija,gramatas_cena,lasitajs_vards,lasitajs_uzvards,lasitajs_pk,lasitajs_tel_numurs,)
+        Dati.gramatas_saglabat()
+    if event == "Lasītājs datu apskate":
+        psg.theme("LightGreen4")
+        layout = [
+                  [psg.Text("Lasītājs")],
+                  [psg.Text("Vārds: " + Dati.lasitajs_vards)],
+                  [psg.Text("Uzvārds: " + Dati.lasitajs_uzvards)],
+                  [psg.Text("Personas kods: " + Dati.lasitajs_pk)],
+                  [psg.Text("Telefona numurs: " + Dati.lasitajs_tel_numurs)],
+                  [psg.Button("Iziet")]
+                  ]
+        window2 = psg.Window('',layout)
+        event,values = window2.read()
+        if event == "Iziet":
+            break 
+    if event == "Grāmatas datu apskate":
+        psg.theme("LightGreen4")
+        layout = [
+                  [psg.Text("Grāmatas")],
+                  [psg.Text("Nosaukums: " + Dati.gramatas_nosaukums)],
+                  [psg.Text("Raksturojums: " + Dati.gramatas_raksturojums)],
+                  [psg.Text("Kategorija: " + Dati.gramatas_kategorija)],
+                  [psg.Text("Cena: " + Dati.gramatas_cena)],
+                  [psg.Button("Iziet")]
+                  ]
+        window2 = psg.Window('',layout)
+        event,values = window2.read()
+        if event == "Iziet":
+            break
+    if event in (psg.WIN_CLOSED,'Aizvērt'):
+        break
