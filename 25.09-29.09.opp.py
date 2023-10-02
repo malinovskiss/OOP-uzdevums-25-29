@@ -1,4 +1,5 @@
 #Tēma- Bibliotēkas vadības sistēma
+import PySimpleGUI as psg
 #Klases izveide
 class Biblioteka():
     # Konstruktora izveide
@@ -50,3 +51,48 @@ Dati.lasitajs_saglabat()
 Dati.gramatas_saglabat()
 Dati.lasitajs_info()
 Dati.gramatas_info()
+
+
+
+
+psg.theme('LightGreen4')
+
+
+layout = [
+        [psg.Text('Lasitajs')],
+        [psg.Text('Vards'),psg.InputText()],
+        [psg.Text('Uzvards'),psg.InputText()],
+        [psg.Text('Personas kods'),psg.InputText()],
+        [psg.Text('Telefona numurs'),psg.InputText()],
+        [psg.Text('Nozare')],
+        [psg.Button('Saglabat lasitaja datus')],
+        [psg.Button('lasitaja datu apskate')]
+]
+
+
+layout2 = [
+    [psg.Text("gramatas")],
+    [psg.Text('nosaukums'),psg.InputText()],
+    [psg.Text('Telefona numurs'),psg.InputText()],
+    [psg.Text('autors'),psg.InputText()],
+    [psg.Button('Saglabat gramatas datus')],
+    [psg.Button('gramatas datu apskate')]    
+    
+]
+
+
+logugrupa = [[
+    psg.TabGroup(
+        [
+         [
+            psg.Tab('lasitajs',layout),
+            psg.Tab('gramata',layout2)
+         ]   
+        ]
+    ),
+    psg.Button('Aizvert')
+]]
+
+window = psg.Window('Biblioteka', logugrupa)
+while True:
+    event,values = window.read()
