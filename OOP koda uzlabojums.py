@@ -4,7 +4,7 @@ import PySimpleGUI as psg
 import mysql.connector
 from cryptography.fernet import Fernet
 
-db = mysql.connector.connect(host= "localhost", database = "biblioteka", user = "root", password = "admin")
+db = mysql.connector.connect(host= "localhost", database = "biblioteka", user = "root", password = "Igars000")
 print(db)
 cursor = db.cursor()
 
@@ -58,7 +58,7 @@ class Biblioteka():
             fails.write(" \n")
             fails.write(str(Dati.gramatas_cena))
         sql = ("""
-        insert into lasitajs (lasitajs, gramatas, autors)
+        insert into biblioteka (lasitajs, gramatas, autors)
         values (%s,%s,%s,%s);
         """)
 
