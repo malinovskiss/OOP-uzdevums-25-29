@@ -1,6 +1,12 @@
 #Bibliotēkas vadības sistēma
 #Bibliotēkas importēšana
 import PySimpleGUI as psg
+import mysql.connector
+from cryptography.fernet import Fernet
+
+db = mysql.connector.connect(host= "localhost", database = "biblioteka", user = "root", password = "admin")
+print(db)
+cursor = db.cursor()
 
 #Izveidota klase
 class Biblioteka():
@@ -51,10 +57,15 @@ class Biblioteka():
             fails.write(str(Dati.gramatas_kategorija))
             fails.write(" \n")
             fails.write(str(Dati.gramatas_cena))
-sql = ("""
-insert into lasitajs (lasitajs, gramatas, autors)
-values (%s,%s,%s,%s);
+        sql = ("""
+        insert into lasitajs (lasitajs, gramatas, autors)
+        values (%s,%s,%s,%s);
         """)
+
+        data = (1,"Edgars","Malinovskis","23657739")
+        cursor.execute(sql,data)
+        db.commit()
+        db.close()
 
 Dati = Biblioteka(lasitajs_vards="Jānis",lasitajs_uzvards="Kalniņš",lasitajs_pk="132435-32153",lasitajs_tel_numurs="25436789",gramatas_nosaukums=" Ronja un viņa laupītāju meita",gramatas_raksturojums="raksturots",gramatas_kategorija="Bērnu",gramatas_cena="25 EUR")
 Dati.lasitajs_saglabat()
