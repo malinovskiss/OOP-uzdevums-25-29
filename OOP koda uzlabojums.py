@@ -1,7 +1,7 @@
 #Bibliotēkas vadības sistēma
 #Bibliotēkas importēšana
 import PySimpleGUI as psg
-import mysql.connector
+
 #Izveidota klase
 class Biblioteka():
 
@@ -29,22 +29,18 @@ class Biblioteka():
 
     #Izveidotas metodes datu saglabāšanai
     def lasitajs_saglabat(self):
-db = mysql.connector.connect(host= 'localhost',database='biblioteka',user='root',password='Igars000')
-print(db)
+        with open('lasitajs.txt', 'w', encoding="utf-8") as fails :
+            fails.write("-lasitajs-")
+            fails.write(" \n")
+            fails.write(str(Dati.lasitajs_vards))
+            fails.write(" \n")
+            fails.write(str(Dati.lasitajs_uzvards))
+            fails.write(" \n")
+            fails.write(str(Dati.lasitajs_pk))
+            fails.write(" \n")
+            fails.write(str(Dati.lasitajs_tel_numurs))
 
-cursor = db.cursor()
-
-sql = ("""
-insert into lasitajs (lasitajs, gramatas, autors)
-values (%s,%s,%s,%s);
-        """)
-
-data = (1,"Edgars","Malinovskis","23657739")
-cursor.execute(sql,data)
-db.commit()
-db.close()
-
-def gramatas_saglabat(self):
+    def gramatas_saglabat(self):
         with open('gramatas.txt', 'w', encoding="utf-8") as fails :
             fails.write("-gramatas-")
             fails.write(" \n")
@@ -55,6 +51,10 @@ def gramatas_saglabat(self):
             fails.write(str(Dati.gramatas_kategorija))
             fails.write(" \n")
             fails.write(str(Dati.gramatas_cena))
+sql = ("""
+insert into lasitajs (lasitajs, gramatas, autors)
+values (%s,%s,%s,%s);
+        """)
 
 Dati = Biblioteka(lasitajs_vards="Jānis",lasitajs_uzvards="Kalniņš",lasitajs_pk="132435-32153",lasitajs_tel_numurs="25436789",gramatas_nosaukums=" Ronja un viņa laupītāju meita",gramatas_raksturojums="raksturots",gramatas_kategorija="Bērnu",gramatas_cena="25 EUR")
 Dati.lasitajs_saglabat()
