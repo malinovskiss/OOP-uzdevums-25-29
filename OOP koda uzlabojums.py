@@ -171,3 +171,5 @@ while True:
             break
     if event in (psg.WIN_CLOSED,'Aizvērt'):
         break
+    if event in (psg.WIN_CLOSED,'Aizvērt'):
+        break
